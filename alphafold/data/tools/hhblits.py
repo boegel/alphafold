@@ -27,6 +27,8 @@ from alphafold.data.tools import utils
 _HHBLITS_DEFAULT_P = 20
 _HHBLITS_DEFAULT_Z = 500
 
+HHBLITS_N_CPU = os.getenv('ALPHAFOLD_HHBLITS_N_CPU', 4)
+
 
 class HHBlits:
   """Python wrapper of the HHblits binary."""
@@ -35,7 +37,7 @@ class HHBlits:
                *,
                binary_path: str,
                databases: Sequence[str],
-               n_cpu: int = 4,
+               n_cpu: int = HHBLITS_N_CPU,
                n_iter: int = 3,
                e_value: float = 0.001,
                maxseq: int = 1_000_000,

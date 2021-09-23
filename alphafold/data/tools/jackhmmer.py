@@ -27,6 +27,9 @@ from alphafold.data.tools import utils
 # Internal import (7716).
 
 
+JACKHMMER_N_CPU = os.getenv('ALPHAFOLD_JACKHMMER_N_CPU', 8)
+
+
 class Jackhmmer:
   """Python wrapper of the Jackhmmer binary."""
 
@@ -34,7 +37,7 @@ class Jackhmmer:
                *,
                binary_path: str,
                database_path: str,
-               n_cpu: int = 8,
+               n_cpu: int = JACKHMMER_N_CPU,
                n_iter: int = 1,
                e_value: float = 0.0001,
                z_value: Optional[int] = None,
